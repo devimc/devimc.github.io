@@ -4,20 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>XML to CSV</title>
-    <script type="module" crossorigin src="./assets/index-mKufsBOw.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-Dn_Ws2SA.css">
+    <script type="module" crossorigin src="./assets/index-MvHYlP4-.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CE5s4TXY.css">
   </head>
   <body>
     <main>
       <header>
         <h1>XML to CSV</h1>
-        <p class="muted">Your file is processed in the browser and is never uploaded.</p>
+        <p class="muted">Your files are processed in the browser and are never uploaded.</p>
       </header>
 
       <section>
         <label id="dropzone" class="dropzone">
-          <input id="file" type="file" accept=".xml,application/xml,text/xml" hidden />
-          <span id="dropzone-text">Drop an XML file here or <u>browse</u></span>
+          <input id="file" type="file" accept=".xml,application/xml,text/xml" multiple hidden />
+          <span id="dropzone-text">Drop one or more XML files here or <u>browse</u></span>
         </label>
         <p id="error" class="error" role="alert" hidden></p>
       </section>
@@ -45,8 +45,15 @@
       <section id="step-output" hidden>
         <h2><span class="step-num">3.</span> Preview and download</h2>
         <div class="options">
-          <label id="metadata-option" hidden><input id="metadata" type="checkbox" checked /> Incluir metadatos</label>
-          <label>
+          <label id="metadata-option" hidden><input id="metadata" type="checkbox" checked /> Incluir metadatos</label>          <label>
+            Format
+            <select id="format">
+              <option value="csv">CSV</option>
+              <option value="xlsx">Excel (.xlsx)</option>
+              <option value="ods" selected>LibreOffice (.ods)</option>
+            </select>
+          </label>
+          <label class="csv-only">
             Delimiter
             <select id="delimiter">
               <option value=",">Comma ( , )</option>
@@ -59,13 +66,13 @@
             <input id="join-sep" type="text" value="|" size="3" />
           </label>
           <label><input id="header" type="checkbox" checked /> Header row</label>
-          <label><input id="bom" type="checkbox" checked /> UTF-8 BOM (for Excel)</label>
+          <label class="csv-only"><input id="bom" type="checkbox" checked /> UTF-8 BOM (for Excel)</label>
         </div>
         <p id="preview-info" class="muted"></p>
         <div class="preview-wrap">
           <table id="preview" class="preview"></table>
         </div>
-        <button type="button" id="download" class="primary">Download CSV</button>
+        <button type="button" id="download" class="primary">Download</button>
       </section>
     </main>
   </body>
