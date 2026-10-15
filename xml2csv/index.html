@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XML to CSV</title>
+    <script type="module" crossorigin src="./assets/index-mKufsBOw.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Dn_Ws2SA.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>XML to CSV</h1>
+        <p class="muted">Your file is processed in the browser and is never uploaded.</p>
+      </header>
+
+      <section>
+        <label id="dropzone" class="dropzone">
+          <input id="file" type="file" accept=".xml,application/xml,text/xml" hidden />
+          <span id="dropzone-text">Drop an XML file here or <u>browse</u></span>
+        </label>
+        <p id="error" class="error" role="alert" hidden></p>
+      </section>
+
+      <section id="step-rows" hidden>
+        <h2><span class="step-num">1.</span> Choose the element that becomes the CSV rows (one row each)</h2>
+        <ul id="row-list" class="row-list"></ul>
+      </section>
+
+      <section id="step-fields" hidden>
+        <h2><span class="step-num">2.</span> Choose columns</h2>
+        <p class="muted">Rename headers, reorder with the arrows, or uncheck to drop a column.</p>
+        <div class="field-actions">
+          <button type="button" id="select-all">Select all</button>
+          <button type="button" id="select-none">Select none</button>
+        </div>
+        <table class="fields">
+          <thead>
+            <tr><th></th><th>Path</th><th>Column header</th><th>Order</th></tr>
+          </thead>
+          <tbody id="field-list"></tbody>
+        </table>
+      </section>
+
+      <section id="step-output" hidden>
+        <h2><span class="step-num">3.</span> Preview and download</h2>
+        <div class="options">
+          <label id="metadata-option" hidden><input id="metadata" type="checkbox" checked /> Incluir metadatos</label>
+          <label>
+            Delimiter
+            <select id="delimiter">
+              <option value=",">Comma ( , )</option>
+              <option value=";">Semicolon ( ; )</option>
+              <option value="&#9;">Tab</option>
+            </select>
+          </label>
+          <label>
+            Join repeated values with
+            <input id="join-sep" type="text" value="|" size="3" />
+          </label>
+          <label><input id="header" type="checkbox" checked /> Header row</label>
+          <label><input id="bom" type="checkbox" checked /> UTF-8 BOM (for Excel)</label>
+        </div>
+        <p id="preview-info" class="muted"></p>
+        <div class="preview-wrap">
+          <table id="preview" class="preview"></table>
+        </div>
+        <button type="button" id="download" class="primary">Download CSV</button>
+      </section>
+    </main>
+  </body>
+</html>
